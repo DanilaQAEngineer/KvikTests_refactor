@@ -1,11 +1,26 @@
-# Этот и аналогичные классы уже являются дочерними классами "base_page" ()
-
-# Перед тем как из основного класса что-то наследовать в дочернем классе, нужно импортировать его в текущий файл
 from pages.base_page import BasePage
+from selenium.webdriver.common.by import By
 
-class Covid19Page(BasePage):    # Создаю класс тестируемой страницы + В аргументах указываю родительский класс, из которого что-то буду наследовать сюда
+class Covid19Page(BasePage):
 
-    URL_PAGE = 'https://www.kvik.ru/auth/'
 
-    def __init__(self, browser):
-        super().__init__(browser)
+    URL_MAIN_PAGE = 'https://www.kvik.ru/'
+    TAB_COVID_19 = (By.CSS_SELECTOR, '.catalog_menu #li-a-0')
+    H1 = (By.TAG_NAME, 'h1')
+    COVID_19_PAGE = (By.XPATH, '//*[@id="li-a-0"]')
+    HLEB_KROSH = (By.CSS_SELECTOR, '.wrapper_inner #bx_breadcrumb_3')
+
+
+    def __init__(self, browser, url=URL_MAIN_PAGE):
+        super().__init__(browser, url)
+
+    def open_main_page(self):
+        self.browser.get('https://www.kvik.ru/')
+        return self
+
+    def click_tab_covid_19(self):
+        self.find_clickable_element(self.TAB_COVID_19).click()
+        return self
+
+    def check_h_1(self):
+        return self.find_element(self.H1).text
