@@ -11,7 +11,7 @@ SCROLL_BUTTON = (By.CSS_SELECTOR, '.scrollup')
 wait = WebDriverWait
 FORM_AFTER_SEARCH = (By.CSS_SELECTOR, '.search-page [value="Искать"]')
 
-@pytest.mark.func    # ← добавил маркировку, чтоб при прогоне тестов из этого файла воспроизводились только помеченные: в терминале пишу команду == pytest -m func -v (название файла).py
+@pytest.mark.func    # ←  добавил маркировку, чтоб при прогоне тестов из этого файла воспроизводились только помеченные: в терминале пишу команду == pytest -m func -v (название файла).py
 def test_search(browser):
     browser.get(URL)
 
