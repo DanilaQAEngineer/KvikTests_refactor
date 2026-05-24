@@ -25,3 +25,4 @@ class BasePage:
 
     def go_to_site(self, url):  # Перейти по ссылке
         return self.browser.get(url)
+

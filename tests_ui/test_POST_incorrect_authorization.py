@@ -59,7 +59,7 @@ def test_incorrect_login(browser, test_data):
     email, password = test_data
 
     (
-        authorization_page.open_page()
+        authorization_page.open_authorization_page()
         .enter_email(email)
         .enter_password(password)
         .click_login_button()
