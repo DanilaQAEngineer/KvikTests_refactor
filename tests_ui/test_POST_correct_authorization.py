@@ -47,14 +47,14 @@ def test_correct_login(browser):
     )
 
     print('\nПроверки таба "Персональные данные":')
-    assert authorization_page.hleb_kroshki_1() == 'Персональные данные'; print('✅ В хлебных крошках есть раздел "Персональные данные"')
-    assert authorization_page.zagolovok_in_lk() == 'Личный кабинет'; print('✅ Заголовок "Личный кабинет" есть')    # Добавляю проверку "Правда ли главный заголовок в ЛК = 'Личный кабинет'?"
+    assert authorization_page.hleb_kroshki_1() == 'Персональные данные'; print('В хлебных крошках есть раздел "Персональные данные"')
+    assert authorization_page.zagolovok_in_lk() == 'Личный кабинет'; print('Заголовок "Личный кабинет" есть')    # Добавляю проверку "Правда ли главный заголовок в ЛК = 'Личный кабинет'?"
     #check.equal(authorization_page.zagolovok_in_lk(), 'Личный кабинет'
-    assert authorization_page.search_tab_pers_date(); print('✅ Таб "Персональные данные" есть')    # Добавляю проверку "Есть ли на странице ЛК таб 'Персональные данные'?"
-    assert authorization_page.forma_test_data(); print('✅ Форма редактирования личных данных есть')    # Добавляю проверку "Есть ли на странице ЛК (таб 'Персональные данные') форма редактирования личных данных?"
-    assert authorization_page.search_tab_history_zakazov(); print('✅ Таб "История заказов" есть')    # Добавляю проверку "Есть ли на странице ЛК таб 'История заказов'?"
-    assert authorization_page.search_tab_smena_parol(); print('✅ Таб "Сменить пароль" есть')    # Добавляю проверку "Есть ли на странице ЛК таб 'Сменить пароль'?"
-    assert authorization_page.search_exit_button(); print('✅ Кнопка "Выйти" есть')    # Добавляю проверку "Есть ли на странице кнопка 'Выйти' после авторизации на сайте?"
+    assert authorization_page.search_tab_pers_date(); print('Таб "Персональные данные" есть')    # Добавляю проверку "Есть ли на странице ЛК таб 'Персональные данные'?"
+    assert authorization_page.forma_test_data(); print('Форма редактирования личных данных есть')    # Добавляю проверку "Есть ли на странице ЛК (таб 'Персональные данные') форма редактирования личных данных?"
+    assert authorization_page.search_tab_history_zakazov(); print('Таб "История заказов" есть')    # Добавляю проверку "Есть ли на странице ЛК таб 'История заказов'?"
+    assert authorization_page.search_tab_smena_parol(); print('Таб "Сменить пароль" есть')    # Добавляю проверку "Есть ли на странице ЛК таб 'Сменить пароль'?"
+    assert authorization_page.search_exit_button(); print('Кнопка "Выйти" есть')    # Добавляю проверку "Есть ли на странице кнопка 'Выйти' после авторизации на сайте?"
     # check.equal(authorization_page.hleb_kroshki_1(), 'Персональные данные', '❌ Хлебные крошки 1'); print('✅ В хлебных крошках есть раздел "Персональные данные"')
     # check.equal(authorization_page.zagolovok_in_lk(), 'Личный кабинет', '❌ Заголовок в ЛК'); print('✅ Заголовок "Личный кабинет" есть')
     # check.is_true(authorization_page.search_tab_pers_date(), '❌ Таб "Персональные данные"'); print('✅ Таб "Персональные данные" есть')
