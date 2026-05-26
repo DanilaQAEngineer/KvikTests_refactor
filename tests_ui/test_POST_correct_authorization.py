@@ -36,6 +36,7 @@ from pages.authorization_page import AuthorizationPage    # Импортирую
 
 # Кейс: Авторизация на сайте (тест с использованием ООП)
 # @pytest.mark.func
+# @pytest.mark.smoke
 def test_correct_login(browser):
     authorization_page = AuthorizationPage(browser)    # Обращаюсь к дочернему классу "AuthorizationPage" (в котором описаны все сущности и методы, используемые на странице): говорю "Работаем с такой-то страницей" (создаю сессию для работы со страницой)
 
