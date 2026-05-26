@@ -61,3 +61,5 @@ jobs:    # JOBS - это задача
       - name: second test    # финальный шаг: Запуск тестов: в зависимости от выбора пользователя
         if: "github.event.inputs.deployment_target == 'second_test'"
         run: pytest tests_ui/test_POST_correct_authorization.py::test_correct_login # указываем имя теста, который нужно запустить
+      - name: all test # запустятся все тесты
+        run: pytest
