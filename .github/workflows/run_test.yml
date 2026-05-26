@@ -39,7 +39,7 @@ on:    # ON - это конструкция "если..."
         options: # в этом параметре перечисляем все опции, которые у нас есть
           - first_test
           - second_test
-          - all test
+          - all_test
 # ниже описывается сам алгоритм запуска тестов:
 jobs:    # JOBS - это задача
   tests:    # задача = запустить тесты
@@ -63,4 +63,5 @@ jobs:    # JOBS - это задача
         if: "github.event.inputs.deployment_target == 'second_test'"
         run: pytest tests_ui/test_POST_correct_authorization.py::test_correct_login # указываем имя теста, который нужно запустить
       - name: all test # запустятся все тесты
+        if: "github.event.inputs.deployment_target == 'all_test'"
         run: pytest
