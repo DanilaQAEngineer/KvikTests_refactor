@@ -36,7 +36,7 @@ def browser():
     options.add_argument("--disable-save-password-bubble")    # (чтобы уведомлялки/модалки о сохранении пароля на странице скрывались?)
     options.add_argument("--disable-notifications")    # (чтобы любые уведомлялки/модалки на странице скрывались?)
     options.add_argument("--window-size=1920,1080")    # Добавил, чтоб браузер открывался полность при запуске теста
-    options.add_argument("--headless")    # Добавил "безголовый режим", чтоб при запуске тестов не открывался браузер
+    #options.add_argument("--headless")    # Добавил "безголовый режим", чтоб при запуске тестов не открывался браузер
 
     driver = webdriver.Chrome(options=options)
     driver.maximize_window()
