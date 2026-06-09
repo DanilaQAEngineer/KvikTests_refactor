@@ -3,7 +3,7 @@
 # Перед тем как из основного класса что-то наследовать в дочернем классе, нужно импортировать его в текущий файл
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
-from locators.authorization_locators import AuthorizationLocators    # подтягиваю в класс с методами авторизации класс с локаторами страницы
+from locators.authorization_locators import AuthorizationLocators    # подтягиваю в класс с методами авторизации класс с локаторами элементов страницы, к которым я буду обращаться
 
 
 class AuthorizationPage(BasePage):    # Класс "Страница авторизации", наследуемый от родительского класса "BasePage"
