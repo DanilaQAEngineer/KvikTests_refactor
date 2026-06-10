@@ -1,4 +1,5 @@
 
+
 class LocatorsForApiTests():
     AUTH_URL = 'https://restful-booker.herokuapp.com/auth'
     HEADERS_FOR_POST_AUTH = {
