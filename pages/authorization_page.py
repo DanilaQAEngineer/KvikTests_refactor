@@ -4,6 +4,7 @@
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
 from locators.authorization_locators import AuthorizationLocators    # подтягиваю в класс с методами авторизации класс с локаторами элементов страницы, к которым я буду обращаться
+import allure    # Нужен для написания шагов воспроизведения в Allure-отчёте
 
 
 class AuthorizationPage(BasePage):    # Класс "Страница авторизации", наследуемый от родительского класса "BasePage"
@@ -12,18 +13,22 @@ class AuthorizationPage(BasePage):    # Класс "Страница автор�
     def __init__(self, browser, url=AuthorizationLocators.URL_AUTHORIZATION):    # инициализирую от основного/родительского класса
         super().__init__(browser, url)
 
+    @allure.step('Открываю страницу авторизации')    # Вешаю на метод декоратор allure.step + В аругментах описываю шаг, который выполянется в рамках метода
     def open_authorization_page(self):    # Создаю метод "Открыть страницу авторизации"
         self.browser.get('https://www.kvik.ru/auth/')
         return self
 
+    @allure.step('Ищу на странице поле логина + Ввожу в него логин')    # Вешаю на метод декоратор allure.step + В аругментах описываю шаг, который выполянется в рамках метода
     def enter_email(self, email):    # Создаю метод "Найти на странице поле 'Почта' + Ввести в него email"
         self.find_element(AuthorizationLocators.EMAIL_INPUT).send_keys(email)
         return self
 
+    @allure.step('Ищу на странице поле пароля + Ввожу в него пароль')    # Вешаю на метод декоратор allure.step + В аругментах описываю шаг, который выполянется в рамках метода
     def enter_password(self, password):    # Создаю метод "Найти на странице поле 'Пароль' + Ввести в него пароль"
         self.find_element(AuthorizationLocators.PASSWORD_INPUT).send_keys(password)
         return self
 
+    @allure.step('Ищу на странице кнопку "Войти" + Кликаю на неё')    # Вешаю на метод декоратор allure.step + В аругментах описываю шаг, который выполянется в рамках метода
     def click_login_button(self):    # Создаю метод "Найти на странице кнопку 'Войти' + Нажать на неё"
         self.find_clickable_element(AuthorizationLocators.LOGIN_BUTTON).click()
         return self
@@ -34,6 +39,7 @@ class AuthorizationPage(BasePage):    # Класс "Страница автор�
     def hleb_kroshki_2(self):    # Создаю метод "Найти на странице хлебные крошки, раздел "История заказов""
         return self.find_element(AuthorizationLocators.HLEB_KOSHKI_2).text
 
+    @allure.step('Ищу на странице таб "История заказов" + Кликаю на него')    # Вешаю на метод декоратор allure.step + В аругментах описываю шаг, который выполянется в рамках метода
     def click_history_zakazov_tab(self):    # Создаю метод "Найти на странице ЛК таб "История заказов" + Кликни на него"
         self.find_clickable_element(AuthorizationLocators.TAB_HISTORY_ZAKAZOV).click()
         return self

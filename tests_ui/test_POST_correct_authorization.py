@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from pages.authorization_page import AuthorizationPage    # Импортирую класс со страницей логинки
-import allure    # прикручиваю Алюр
+import allure    # прикручиваю Аллюр
 
 
 # URL = 'https://www.kvik.ru/'
@@ -43,6 +43,7 @@ import allure    # прикручиваю Алюр
 def test_correct_login(browser):
     authorization_page = AuthorizationPage(browser)    # Обращаюсь к дочернему классу "AuthorizationPage" (в котором описаны все сущности и методы, используемые на странице): говорю "Работаем с такой-то страницей" (создаю сессию для работы со страницой)
 
+
     (
         authorization_page.open_authorization_page()    # Перехожу на страницу авторизации
         .enter_email('itsamono@gmail.com')    # Ввожу почту в поле "email"
@@ -50,31 +51,33 @@ def test_correct_login(browser):
         .click_login_button()    # Нажимаю кнопку "Войти"
     )
 
-    print('\nПроверки таба "Персональные данные":')
-    assert authorization_page.hleb_kroshki_1() == 'Персональные данные'; print('В хлебных крошках есть раздел "Персональные данные"')
-    assert authorization_page.zagolovok_in_lk() == 'Личный кабинет'; print('Заголовок "Личный кабинет" есть')    # Добавляю проверку "Правда ли главный заголовок в ЛК = 'Личный кабинет'?"
-    #check.equal(authorization_page.zagolovok_in_lk(), 'Личный кабинет'
-    assert authorization_page.search_tab_pers_date(); print('Таб "Персональные данные" есть')    # Добавляю проверку "Есть ли на странице ЛК таб 'Персональные данные'?"
-    assert authorization_page.forma_test_data(); print('Форма редактирования личных данных есть')    # Добавляю проверку "Есть ли на странице ЛК (таб 'Персональные данные') форма редактирования личных данных?"
-    assert authorization_page.search_tab_history_zakazov(); print('Таб "История заказов" есть')    # Добавляю проверку "Есть ли на странице ЛК таб 'История заказов'?"
-    assert authorization_page.search_tab_smena_parol(); print('Таб "Сменить пароль" есть')    # Добавляю проверку "Есть ли на странице ЛК таб 'Сменить пароль'?"
-    assert authorization_page.search_exit_button(); print('Кнопка "Выйти" есть')    # Добавляю проверку "Есть ли на странице кнопка 'Выйти' после авторизации на сайте?"
-    # check.equal(authorization_page.hleb_kroshki_1(), 'Персональные данные', '❌ Хлебные крошки 1'); print('✅ В хлебных крошках есть раздел "Персональные данные"')
-    # check.equal(authorization_page.zagolovok_in_lk(), 'Личный кабинет', '❌ Заголовок в ЛК'); print('✅ Заголовок "Личный кабинет" есть')
-    # check.is_true(authorization_page.search_tab_pers_date(), '❌ Таб "Персональные данные"'); print('✅ Таб "Персональные данные" есть')
-    # check.is_true(authorization_page.forma_test_data(), '❌ Форма редактирования'); print('✅ Форма редактирования личных данных есть')
-    # check.is_true(authorization_page.search_tab_history_zakazov(), '❌ Таб "История заказов"'); print('✅ Таб "История заказов" есть')
-    # check.is_true(authorization_page.search_tab_smena_parol(), '❌ Таб "Сменить пароль"'); print('✅ Таб "Сменить пароль" есть')
-    # check.is_true(authorization_page.search_exit_button(), '❌ Кнопка "Выйти"'); print('✅ Кнопка "Выйти" есть')
+    with allure.step('Проверки таба "Персональные данные":'):    # !!! Добавил шаг с проверками непосредственно в тесте, т.к. в классе нет assert`ов
+        print('\nПроверки таба "Персональные данные":')
+        assert authorization_page.hleb_kroshki_1() == 'Персональные данные'; print('В хлебных крошках есть раздел "Персональные данные"')
+        assert authorization_page.zagolovok_in_lk() == 'Личный кабинет'; print('Заголовок "Личный кабинет" есть')    # Добавляю проверку "Правда ли главный заголовок в ЛК = 'Личный кабинет'?"
+        #check.equal(authorization_page.zagolovok_in_lk(), 'Личный кабинет'
+        assert authorization_page.search_tab_pers_date(); print('Таб "Персональные данные" есть')    # Добавляю проверку "Есть ли на странице ЛК таб 'Персональные данные'?"
+        assert authorization_page.forma_test_data(); print('Форма редактирования личных данных есть')    # Добавляю проверку "Есть ли на странице ЛК (таб 'Персональные данные') форма редактирования личных данных?"
+        assert authorization_page.search_tab_history_zakazov(); print('Таб "История заказов" есть')    # Добавляю проверку "Есть ли на странице ЛК таб 'История заказов'?"
+        assert authorization_page.search_tab_smena_parol(); print('Таб "Сменить пароль" есть')    # Добавляю проверку "Есть ли на странице ЛК таб 'Сменить пароль'?"
+        assert authorization_page.search_exit_button(); print('Кнопка "Выйти" есть')    # Добавляю проверку "Есть ли на странице кнопка 'Выйти' после авторизации на сайте?"
+        # check.equal(authorization_page.hleb_kroshki_1(), 'Персональные данные', '❌ Хлебные крошки 1'); print('✅ В хлебных крошках есть раздел "Персональные данные"')
+        # check.equal(authorization_page.zagolovok_in_lk(), 'Личный кабинет', '❌ Заголовок в ЛК'); print('✅ Заголовок "Личный кабинет" есть')
+        # check.is_true(authorization_page.search_tab_pers_date(), '❌ Таб "Персональные данные"'); print('✅ Таб "Персональные данные" есть')
+        # check.is_true(authorization_page.forma_test_data(), '❌ Форма редактирования'); print('✅ Форма редактирования личных данных есть')
+        # check.is_true(authorization_page.search_tab_history_zakazov(), '❌ Таб "История заказов"'); print('✅ Таб "История заказов" есть')
+        # check.is_true(authorization_page.search_tab_smena_parol(), '❌ Таб "Сменить пароль"'); print('✅ Таб "Сменить пароль" есть')
+        # check.is_true(authorization_page.search_exit_button(), '❌ Кнопка "Выйти"'); print('✅ Кнопка "Выйти" есть')
 
     (
         authorization_page.click_history_zakazov_tab()
     )
 
-    print('\nПроверки таба "История заказов":')
-    assert authorization_page.hleb_kroshki_2() == 'История заказов'; print('✅ В хлебных крошках есть раздел "История заказов"')
-    assert authorization_page.zagolovok_history_zakazov() == 'История заказов'; print('✅ Заголовок "История заказов" есть')
-    assert authorization_page.search_catalog_button(); print('✅ Кнопка "Перейти в каталог" есть')    #
-    # check.equal(authorization_page.hleb_kroshki_2(), 'История заказов', '❌ Хлебные крошки 2'); print('✅ В хлебных крошках есть раздел "История заказов"')
-    # check.equal(authorization_page.zagolovok_history_zakazov(), 'История заказа', '❌ Заголовок "История заказов"'); print('✅ Заголовок "История заказов" есть')
-    # check.is_true(authorization_page.search_catalog_button(), '❌ Кнопка "Перейти в каталог"'); print('✅ Кнопка "Перейти в каталог" есть')
+    with allure.step('Проверки таба "История заказов":'):    # !!! Добавил шаг с проверками непосредственно в тесте, т.к. в классе нет assert`ов
+        print('\nПроверки таба "История заказов":')
+        assert authorization_page.hleb_kroshki_2() == 'История заказов'; print('✅ В хлебных крошках есть раздел "История заказов"')
+        assert authorization_page.zagolovok_history_zakazov() == 'История заказов'; print('✅ Заголовок "История заказов" есть')
+        assert authorization_page.search_catalog_button(); print('✅ Кнопка "Перейти в каталог" есть')    #
+        # check.equal(authorization_page.hleb_kroshki_2(), 'История заказов', '❌ Хлебные крошки 2'); print('✅ В хлебных крошках есть раздел "История заказов"')
+        # check.equal(authorization_page.zagolovok_history_zakazov(), 'История заказа', '❌ Заголовок "История заказов"'); print('✅ Заголовок "История заказов" есть')
+        # check.is_true(authorization_page.search_catalog_button(), '❌ Кнопка "Перейти в каталог"'); print('✅ Кнопка "Перейти в каталог" есть')
