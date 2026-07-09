@@ -15,7 +15,7 @@ class AuthorizationPage(BasePage):    # Класс "Страница автор�
 
     @allure.step('Открываю страницу авторизации')    # Вешаю на метод декоратор allure.step + В аругментах описываю шаг, который выполянется в рамках метода
     def open_authorization_page(self):    # Создаю метод "Открыть страницу авторизации"
-        self.browser.get('https://www.kvik.ru/auth/')
+        self.browser.get(AuthorizationLocators.URL_AUTHORIZATION)
         return self
 
     @allure.step('Ищу на странице поле логина + Ввожу в него логин')    # Вешаю на метод декоратор allure.step + В аругментах описываю шаг, который выполянется в рамках метода
